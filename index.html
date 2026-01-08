@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>InstaSite – Website Builder</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#eef2f7;
+  margin:0;
+  padding:20px;
+}
+.card{
+  max-width:430px;
+  margin:auto;
+  background:#fff;
+  padding:22px;
+  border-radius:18px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.1);
+  text-align:center;
+}
+h1{margin-bottom:5px;}
+p{color:#555;}
+
+input, textarea{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:12px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  border:none;
+  border-radius:14px;
+  font-size:16px;
+  color:#fff;
+  cursor:pointer;
+}
+
+.preview-btn{background:#22c55e;}
+.order-btn{background:#16a34a;}
+
+#preview{
+  display:none;
+  margin-top:20px;
+  padding:16px;
+  background:#ecfdf5;
+  border-radius:14px;
+  text-align:left;
+}
+
+.trust{
+  margin-top:15px;
+  font-size:14px;
+  color:#444;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>InstaSite ✅</h1>
+  <p>Create your website instantly</p>
+
+  <input id="name" placeholder="Business / Name">
+  <input id="phone" placeholder="Phone Number">
+  <textarea id="about" placeholder="About your business"></textarea>
+
+  <button class="preview-btn" onclick="generate()">Preview Website</button>
+  <button class="order-btn" onclick="order()">Order on WhatsApp</button>
+
+  <div id="preview"></div>
+
+  <div class="trust">
+    ✅ Free Preview · 💳 UPI Accepted · 🇮🇳 Made in India  
+    <br><small>Powered by InstaSite</small>
+  </div>
+</div>
+
+<script>
+function generate(){
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const about = document.getElementById("about").value;
+  const preview = document.getElementById("preview");
+
+  if(!name || !phone || !about){
+    alert("Please fill all details");
+    return;
+  }
+
+  preview.style.display = "block";
+  preview.innerHTML = `
+    <h3>${name}</h3>
+    <p>${about}</p>
+    <p><b>Contact:</b> ${phone}</p>
+  `;
+}
+
+function order(){
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const about = document.getElementById("about").value;
+
+  const msg =
+`Hi, I want my website.
+
+Name: ${name}
+Phone: ${phone}
+About: ${about}
+Plan: Business Website`;
+
+  window.open("https://wa.me/7077244534?text=" + encodeURIComponent(msg));
+}
+</script>
+
+</body>
+</html>
